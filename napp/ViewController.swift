@@ -43,6 +43,14 @@ class ViewController: UIViewController {
         return textView
     }()
     
+    // set up "previous" button
+    private let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Prev", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +59,17 @@ class ViewController: UIViewController {
         
         // add image constraints, set background color
         setupLayout()
+        
+        // set up bottom menu
+        setupBottomControls()
 
+    }
+    
+    // construct bottom menu
+    func setupBottomControls() {
+        view.addSubview(previousButton)
+        previousButton.backgroundColor = .red
+        
     }
 
     private func setupLayout() {
@@ -65,27 +83,32 @@ class ViewController: UIViewController {
         topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
         
         // define constraints for container
-        topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        NSLayoutConstraint.activate([
+            topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor),
+            topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
+        ])
         
         // add image to container
         topImageContainerView.addSubview(eyeOpenView)
         
         // define constraints for eyeOpen image
-        eyeOpenView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
-        eyeOpenView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
-        eyeOpenView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6).isActive = true
-        eyeOpenView.widthAnchor.constraint(equalTo: topImageContainerView.widthAnchor, multiplier: 0.75).isActive = true
-        
-        // define constraints for text
-        descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 50).isActive = true
-        descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
-        descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
-        descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive  = true
+        NSLayoutConstraint.activate([
+            eyeOpenView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
+            eyeOpenView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
+            eyeOpenView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6),
+            eyeOpenView.widthAnchor.constraint(equalTo: topImageContainerView.widthAnchor, multiplier: 0.75)
+        ])
 
         
+        // define constraints for text
+        NSLayoutConstraint.activate([
+            descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 50),
+            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     override func didReceiveMemoryWarning() {
