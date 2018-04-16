@@ -8,8 +8,11 @@
 
 import UIKit
 
+extension UIColor {
+    static var babyBlue = UIColor(red: 51/255.0, green: 224/255.0, blue: 255/255.0, alpha: 1)
+}
+
 class ViewController: UIViewController {
-    
     
     let eyeOpenView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "eyeOpen"))
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
-        textView.backgroundColor = UIColor(red: 51/255.0, green: 224/255.0, blue: 255/255.0, alpha: 1)
+        textView.backgroundColor = .babyBlue
         textView.textColor = .white
         return textView
     }()
@@ -46,9 +49,29 @@ class ViewController: UIViewController {
     // set up "previous" button
     private let previousButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Prev", for: .normal)
+        button.setTitle("PREV", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
         return button
+    }()
+    
+    // set up "next" button
+    private let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("NEXT", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+
+        return button
+    }()
+    
+    private let pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 4
+        return pc
     }()
     
     override func viewDidLoad() {
@@ -67,15 +90,27 @@ class ViewController: UIViewController {
     
     // construct bottom menu
     func setupBottomControls() {
-        view.addSubview(previousButton)
-        previousButton.backgroundColor = .red
+        
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
+        
+        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomControlsStackView.distribution = .fillEqually
+
+        view.addSubview(bottomControlsStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
         
     }
 
     private func setupLayout() {
-        // define background color
-        let babyBlue: UIColor = UIColor(red: 51/255.0, green: 224/255.0, blue: 255/255.0, alpha: 1)
-        view.backgroundColor = babyBlue
+        // set background color
+        view.backgroundColor = .babyBlue
         
         // set up container
         let topImageContainerView = UIView()
