@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-//        let randomViewController = UIViewController()
-//        randomViewController.view.backgroundColor = .purple
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal

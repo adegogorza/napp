@@ -10,7 +10,24 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
-    let eyeOpenView: UIImageView = {
+    var page: Page? {
+        didSet {
+            
+            guard let unwrappedPage = page else { return }
+            eyeOpenView.image = UIImage(named: unwrappedPage.imageName)
+            
+            // set up mutable text
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.white])
+            
+            // add text with alternate style
+            attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.white]))
+            
+            descriptionTextView.attributedText = attributedText
+            descriptionTextView.textAlignment = .center
+        }
+    }
+    
+    private let eyeOpenView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "eyeOpen"))
         // enable autoLayout for eyeOpen image
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +38,7 @@ class PageCell: UICollectionViewCell {
         return imageView
     }()
     
-    let descriptionTextView: UITextView = {
+    private let descriptionTextView: UITextView = {
         let textView = UITextView()
         
         // set up mutable text
@@ -67,7 +84,7 @@ class PageCell: UICollectionViewCell {
         // add image to container
         topImageContainerView.addSubview(eyeOpenView)
         
-        // define constraints for eyeOpen image
+        // define constraints for image
         NSLayoutConstraint.activate([
             eyeOpenView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
             eyeOpenView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
