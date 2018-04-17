@@ -79,6 +79,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print ("Jonah was eaten by a whale")
         
         // add text
         view.addSubview(descriptionTextView)
