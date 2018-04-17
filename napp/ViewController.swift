@@ -9,7 +9,9 @@
 import UIKit
 
 extension UIColor {
-    static var babyBlue = UIColor(red: 51/255.0, green: 224/255.0, blue: 255/255.0, alpha: 1)
+    //static var babyBlue = UIColor(red: 51/255.0, green: 224/255.0, blue: 255/255.0, alpha: 1)
+    static var babyBlue = UIColor(red: 147/255.0, green: 208/255.0, blue: 251/255.0, alpha: 1)
+
 }
 
 class ViewController: UIViewController {
@@ -67,6 +69,7 @@ class ViewController: UIViewController {
         return button
     }()
     
+    // st up page indicator
     private let pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
@@ -77,10 +80,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.addSubview(eyeOpenView)
+        // add text
         view.addSubview(descriptionTextView)
         
-        // add image constraints, set background color
+        // do setup
         setupLayout()
         
         // set up bottom menu
@@ -91,13 +94,17 @@ class ViewController: UIViewController {
     // construct bottom menu
     func setupBottomControls() {
         
+        // set up StackView array
         let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
         
+        // set array layout
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomControlsStackView.distribution = .fillEqually
 
+        // display
         view.addSubview(bottomControlsStackView)
         
+        // set StackView constraints
         NSLayoutConstraint.activate([
             bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

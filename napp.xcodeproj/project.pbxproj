@@ -12,6 +12,8 @@
 		985ABAC12083F5CE00974DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985ABABF2083F5CE00974DC9 /* Main.storyboard */; };
 		985ABAC32083F5D000974DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 985ABAC22083F5D000974DC9 /* Assets.xcassets */; };
 		985ABAC62083F5D100974DC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985ABAC42083F5D100974DC9 /* LaunchScreen.storyboard */; };
+		985ABACE208566E100974DC9 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985ABACD208566E100974DC9 /* SwipingController.swift */; };
+		9894EC642085A5F2003FBC13 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894EC632085A5F2003FBC13 /* PageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		985ABAC22083F5D000974DC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		985ABAC52083F5D100974DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		985ABAC72083F5D100974DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		985ABACD208566E100974DC9 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
+		9894EC632085A5F2003FBC13 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				985ABAC22083F5D000974DC9 /* Assets.xcassets */,
 				985ABAC42083F5D100974DC9 /* LaunchScreen.storyboard */,
 				985ABAC72083F5D100974DC9 /* Info.plist */,
+				9894EC632085A5F2003FBC13 /* PageCell.swift */,
+				985ABACD208566E100974DC9 /* SwipingController.swift */,
 			);
 			path = napp;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			files = (
 				985ABABE2083F5CE00974DC9 /* ViewController.swift in Sources */,
 				985ABABC2083F5CE00974DC9 /* AppDelegate.swift in Sources */,
+				9894EC642085A5F2003FBC13 /* PageCell.swift in Sources */,
+				985ABACE208566E100974DC9 /* SwipingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
